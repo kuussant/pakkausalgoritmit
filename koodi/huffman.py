@@ -1,8 +1,10 @@
+import sys
 import heapq
 from itertools import count
 
-DIR_PATH = ""
+
 FILE_BUFFER = 1024
+
 
 class HuffmanTreeNode():
     def __init__(self, symbol = None):
@@ -68,18 +70,40 @@ def traverse(root: HuffmanTreeNode) -> dict[int, str]:
     return codes
 
 
-# kulje syötetiedosto uudelleen läpi ja luo pakattu tiedosto
-def encode_file(codes: dict[int, str], freqs: list[tuple[str, int]]) -> None:
+def encode_file(in_filename: str, out_filename: str) -> None:
+    freqs = [0] * 256 # taulukko ascii merkkejä varten
+    
+    with open(in_filename, "rb") as f:
+        while True:
+            chunk = f.read(FILE_BUFFER)
+
+            if not chunk:
+                break
+
+            # kasvata esiintyvän merkin määrää
+            for b in chunk:
+                freqs[b] += 1
+
+    # suodata esiintymät
+    freqs_tuples = [(i, freq) for i, freq in enumerate(freqs) if freq > 0]
+
+    # rakenna huffman-puu
+    root = build_tree(freqs_tuples)
+
+    # määritä huffman-koodit
+    codes = traverse(root)
+    
     byte_len = 8
     current_byte = ''
     overflow_bits = ''
-    symbol_count = len(freqs)
+    symbol_count = len(freqs_tuples)
 
-    with open(DIR_PATH + "input.txt", "rb") as in_file, open(DIR_PATH + "encoded.bin", "wb") as out_file:
+    # kulje syötetiedosto uudelleen läpi ja luo pakattu tiedosto
+    with open(in_filename, "rb") as in_file, open(out_filename, "wb") as out_file:
         # headeri
         out_file.write(symbol_count.to_bytes(2, byteorder="big"))
 
-        for b, f in freqs:
+        for b, f in freqs_tuples:
             out_file.write(b.to_bytes(1, byteorder="big"))
             out_file.write(f.to_bytes(4, byteorder="big"))
 
@@ -112,15 +136,14 @@ def encode_file(codes: dict[int, str], freqs: list[tuple[str, int]]) -> None:
                 out_file.write(bytes([byte]))
 
 
-def test_read() -> None:
+def decode_file(in_filename: str, out_filename: str) -> None:
     freqs_tuples = []
     file_size = 0
 
-    with open(DIR_PATH + "encoded.bin", "rb") as bin, open(DIR_PATH  + "decoded.txt", "w") as out:
+    with open(in_filename, "rb") as bin, open(out_filename, "w") as out:
         # lue headeri
         data = bin.read(2)
         symbol_count = int.from_bytes(data, byteorder="big")
-        print("Unique symbols", symbol_count)
 
         for _ in range(symbol_count):
             symbol = int.from_bytes(bin.read(1), byteorder="big")
@@ -165,31 +188,31 @@ def test_read() -> None:
                     symbol_count += 1
 
 
+def _usage():
+    print("Käyttö: python huffman.py <moodi> <syöte> <tuloste>")
+    print("Moodit: 1 (pakkaa syötetiedosto), 2 (pura syötetiedosto)")
+
+
 def main():
-    # valmis taulukko jokaista merkkiä kohden
-    freqs = [0] * 256
+    if len(sys.argv) < 4:
+        _usage()
+        sys.exit(1)
+    else:
+        mode = sys.argv[1]
+        in_filename = sys.argv[2]
+        out_filename = sys.argv[3]
 
-    with open(DIR_PATH + "input.txt", "rb") as f:
-        while True:
-            chunk = f.read(FILE_BUFFER)
+        if mode == "1":
+            print("encoding")
+            encode_file(in_filename, out_filename)
+            return
+        elif mode == "2":
+            print("decoding")
+            decode_file(in_filename, out_filename)
+        else:
+            _usage()
+            sys.exit(1)
 
-            if not chunk:
-                break
 
-            # kasvata esiintyvän merkin määrää
-            for b in chunk:
-                freqs[b] += 1
-
-    # suodata esiintymät
-    freqs_tuples = [(i, freq) for i, freq in enumerate(freqs) if freq > 0]
-
-    # rakenna huffman-puu
-    root = build_tree(freqs_tuples)
-
-    # määritä huffman-koodit
-    codes = traverse(root)
-
-    encode_file(codes, freqs_tuples)
-    test_read()
-
-main()
+if __name__ == "__main__":
+    main()
