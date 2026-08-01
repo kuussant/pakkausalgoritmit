@@ -1,0 +1,3 @@
+- Myöhässä kurssin aikataulusta...
+- Huffmanin koodauksen opiskelua
+- Huffmanin koodauksen implementointi
