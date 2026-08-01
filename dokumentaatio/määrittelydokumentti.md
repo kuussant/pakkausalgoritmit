@@ -4,7 +4,7 @@
 Projektin tavoitteena on implementoida vähintään kaksi pakkausalgoritmia ja vertailla niitä keskenään tekstipohjaisten tiedostojen pakkaamisessa.
 
 ### Algoritmit
-Yksi (tai useampi) Lempel-Ziv -algoritmi ja Huffmanin koodaus (toistaiseksi).
+LZ78 ja Huffmanin koodaus.
 
 ### Projektin kieli
 Projekti toteutetaan Pythonilla.
