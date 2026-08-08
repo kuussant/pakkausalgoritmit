@@ -13,7 +13,7 @@ Projekti toteutetaan Pythonilla.
 Harjoitustyön ajatuksena on tutustua vähintään kahteen toisista poikkeavaan pakkausalgoritmiin, toteuttaa ne ja vertailla niiden suorituskykyä toisiinsa.
 
 ### Muista ohjelmointikielistä vertaisarvioinneissa
-Python, C++ ja C#.
+C++ ja C#
 
 ### Opinto-ohjelma ja dokumentaation kieli
 Tietojenkäsittelytieteen kandidaatti.
