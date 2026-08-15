@@ -17,7 +17,6 @@ class HuffmanTreeNode():
         return self.freq < other.freq
 
 
-# rakentaa huffman-puun ja palauttaa juuren
 def build_tree(freqs_list: list[tuple[str, int]]) -> HuffmanTreeNode:
     pq = []
     counter = count() # laskuri, joka erottaa toisistaan esiintymät, joilla on sama todennäköisyys
@@ -29,10 +28,8 @@ def build_tree(freqs_list: list[tuple[str, int]]) -> HuffmanTreeNode:
 
     # yhdistele merkkejä (solmuja) kunnes jäljellä on yksi 
     while len(pq) > 1:
-        # vasen solmu
         freq_left, _, node_left = heapq.heappop(pq)
 
-        # oikea solmu
         freq_right, _, node_right = heapq.heappop(pq)
 
         new_freq = freq_left + freq_right
@@ -48,8 +45,8 @@ def build_tree(freqs_list: list[tuple[str, int]]) -> HuffmanTreeNode:
     return root
 
 
-# kulkee huffman-puun läpi, määrittää jokaiselle lehtisolmulle koodin
 def traverse(root: HuffmanTreeNode) -> dict[int, str]:
+    """Kulkee Huffman-puun läpi ja määrittää jokaiselle lehtisolmulle koodin."""
     codes = dict()
 
     def _traverse(node: HuffmanTreeNode, code: str = ''):
@@ -92,7 +89,9 @@ def encode_file(in_filename: str, out_filename: str) -> None:
 
     # määritä huffman-koodit
     codes = traverse(root)
-    
+
+    print(codes)
+
     byte_len = 8
     current_byte = ''
     overflow_bits = ''
@@ -103,9 +102,11 @@ def encode_file(in_filename: str, out_filename: str) -> None:
         # headeri
         out_file.write(symbol_count.to_bytes(2, byteorder="big"))
 
+        print(freqs_tuples)
         for b, f in freqs_tuples:
             out_file.write(b.to_bytes(1, byteorder="big"))
             out_file.write(f.to_bytes(4, byteorder="big"))
+
 
         # kirjoita data tavuina
         while True:
@@ -118,10 +119,12 @@ def encode_file(in_filename: str, out_filename: str) -> None:
                 current_byte += codes[b]
 
                 # kirjoittaa tavun
-                if len(current_byte) >= byte_len:
+                while len(current_byte) >= byte_len:
                     write_out = current_byte[:8]
                     overflow_bits = current_byte[8:]
 
+                    # print(write_out)
+                    # print(overflow_bits)
                     # muunna merkkijono tavuksi
                     byte = int(write_out, 2)
                     out_file.write(bytes([byte]))
@@ -129,18 +132,26 @@ def encode_file(in_filename: str, out_filename: str) -> None:
                     current_byte = overflow_bits
                     #print(write_out)
 
-            if overflow_bits != '':
-                overflow_bits = overflow_bits + '0' * (byte_len - len(overflow_bits))
+        # hoida jäämät
+        if len(current_byte) > 0:
+            current_byte = current_byte + '0' * (byte_len - len(current_byte))
 
-                byte = int(overflow_bits, 2)
-                out_file.write(bytes([byte]))
+            print(current_byte)
+            byte = int(current_byte, 2)
+            out_file.write(bytes([byte]))
+
+        # if overflow_bits != '':
+        #     overflow_bits = overflow_bits + '0' * (byte_len - len(overflow_bits))
+
+        #     byte = int(overflow_bits, 2)
+        #     out_file.write(bytes([byte]))
 
 
 def decode_file(in_filename: str, out_filename: str) -> None:
     freqs_tuples = []
     file_size = 0
 
-    with open(in_filename, "rb") as bin, open(out_filename, "w") as out:
+    with open(in_filename, "rb") as bin, open(out_filename, "wb") as out:
         # lue headeri
         data = bin.read(2)
         symbol_count = int.from_bytes(data, byteorder="big")
@@ -182,7 +193,7 @@ def decode_file(in_filename: str, out_filename: str) -> None:
 
                 # tarkista onko lehtisolmu
                 if next_symbol is not None:
-                    out.write(chr(next_symbol))
+                    out.write(bytes([next_symbol]))
                         
                     next_node = root
                     symbol_count += 1
