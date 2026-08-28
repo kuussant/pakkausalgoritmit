@@ -10,7 +10,7 @@ LZ78 ja Huffmanin koodaus.
 Projekti toteutetaan Pythonilla.
 
 ### Harjoitustyön ydin
-Harjoitustyön ajatuksena on tutustua vähintään kahteen toisista poikkeavaan pakkausalgoritmiin, toteuttaa ne ja vertailla niiden suorituskykyä toisiinsa.
+Harjoitustyön ajatuksena on tutustua vähintään kahteen toisista poikkeavaan pakkausalgoritmiin, toteuttaa ne ja vertailla niiden pakkaustehoa keskenään erilaisilla tiedostoilla.
 
 ### Muista ohjelmointikielistä vertaisarvioinneissa
 C++ ja C#
