@@ -12,6 +12,15 @@ Projekti toteutetaan Pythonilla.
 ### Harjoitustyön ydin
 Harjoitustyön ajatuksena on tutustua vähintään kahteen toisista poikkeavaan pakkausalgoritmiin, toteuttaa ne ja vertailla niiden pakkaustehoa keskenään erilaisilla tiedostoilla.
 
+### Odotetut aika- ja tilavaativuudet
+LZ78 aikavaativuus: O(n)
+<br>
+LZ78 tilavaativuus: O(n)
+<br>
+Huffman aikavaativuus: O(n log n)
+<br>
+Huffman tilavaativuus: O(n)
+
 ### Muista ohjelmointikielistä vertaisarvioinneissa
 C++ ja C#
 
