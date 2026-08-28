@@ -13,7 +13,8 @@ dependencies = [
 
 [tool.poetry]
 packages = [
-    { include = "lz78", from = "src" }
+    { include = "lz78", from = "src" },
+    { include = "huffman", from = "src" }
 ]
 
 

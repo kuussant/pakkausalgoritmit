@@ -1,5 +1,5 @@
-import sys
-import heapq
+import time, argparse, heapq
+from pathlib import Path
 from itertools import count
 
 
@@ -21,28 +21,30 @@ def build_tree(freqs_list: list[tuple[str, int]]) -> HuffmanTreeNode:
     pq = []
     counter = count() # laskuri, joka erottaa toisistaan esiintymät, joilla on sama todennäköisyys
 
-    for freq in freqs_list:
-        node = HuffmanTreeNode(freq[0])
-        node.freq = freq[1]
-        heapq.heappush(pq, (node.freq, next(counter), node)) # prioriteettijono auttaa valitsemaan seuraavaksi harvinaisimman merkin
+    if freqs_list:
+        for freq in freqs_list:
+            node = HuffmanTreeNode(freq[0])
+            node.freq = freq[1]
+            heapq.heappush(pq, (node.freq, next(counter), node)) # prioriteettijono auttaa valitsemaan seuraavaksi harvinaisimman merkin
 
-    # yhdistele merkkejä (solmuja) kunnes jäljellä on yksi 
-    while len(pq) > 1:
-        freq_left, _, node_left = heapq.heappop(pq)
+        # yhdistele merkkejä (solmuja) kunnes jäljellä on yksi 
+        while len(pq) > 1:
+            freq_left, _, node_left = heapq.heappop(pq)
 
-        freq_right, _, node_right = heapq.heappop(pq)
+            freq_right, _, node_right = heapq.heappop(pq)
 
-        new_freq = freq_left + freq_right
+            new_freq = freq_left + freq_right
 
-        new_node = HuffmanTreeNode()
-        new_node.left = node_left
-        new_node.right = node_right
-        new_node.freq = new_freq
-        heapq.heappush(pq, (new_node.freq, next(counter), new_node))
+            new_node = HuffmanTreeNode()
+            new_node.left = node_left
+            new_node.right = node_right
+            new_node.freq = new_freq
+            heapq.heappush(pq, (new_node.freq, next(counter), new_node))
 
-    _, _, root = heapq.heappop(pq)
+        _, _, root = heapq.heappop(pq)
 
-    return root
+        return root
+    return None
 
 
 def traverse(root: HuffmanTreeNode) -> dict[int, str]:
@@ -80,7 +82,7 @@ def encode_file(in_filename: str, out_filename: str) -> None:
             # kasvata esiintyvän merkin määrää
             for b in chunk:
                 freqs[b] += 1
-
+    
     # suodata esiintymät
     freqs_tuples = [(i, freq) for i, freq in enumerate(freqs) if freq > 0]
 
@@ -136,15 +138,8 @@ def encode_file(in_filename: str, out_filename: str) -> None:
         if len(current_byte) > 0:
             current_byte = current_byte + '0' * (byte_len - len(current_byte))
 
-            # print(current_byte)
             byte = int(current_byte, 2)
             out_file.write(bytes([byte]))
-
-        # if overflow_bits != '':
-        #     overflow_bits = overflow_bits + '0' * (byte_len - len(overflow_bits))
-
-        #     byte = int(overflow_bits, 2)
-        #     out_file.write(bytes([byte]))
 
 
 def decode_file(in_filename: str, out_filename: str) -> None:
@@ -199,30 +194,48 @@ def decode_file(in_filename: str, out_filename: str) -> None:
                     symbol_count += 1
 
 
-def _usage():
-    print("Käyttö: python huffman.py <moodi> <syöte> <tuloste>")
-    print("Moodit: 1 (pakkaa syötetiedosto), 2 (pura syötetiedosto)")
+def compression_stats(input_size, encoded_size, time_elapsed):
+    compression_ratio = encoded_size / input_size
+    space_saved = 1 - compression_ratio
+
+    print(f"{'Input file size:':<25}{input_size} bytes")
+    print(f"{'Encoded file size:':<25}{encoded_size} bytes")
+    print(f"{'Compression ratio:':<25}{compression_ratio:.2%}")
+    print(f"{'Space saved:':<25}{space_saved:.2%}")
+    print(f"{'Time:':<25}{time_elapsed:.4f} s")
 
 
 def main():
-    if len(sys.argv) < 4:
-        _usage()
-        sys.exit(1)
-    else:
-        mode = sys.argv[1]
-        in_filename = sys.argv[2]
-        out_filename = sys.argv[3]
+    parser = argparse.ArgumentParser(
+        description = "Huffman coding"
+    )
 
-        if mode == "1":
-            print("encoding")
-            encode_file(in_filename, out_filename)
-            return
-        elif mode == "2":
-            print("decoding")
-            decode_file(in_filename, out_filename)
-        else:
-            _usage()
-            sys.exit(1)
+    parser.add_argument(
+        "mode",
+        choices = ["1", "2"],
+        help = "1 = encode file, 2 = decode file"
+    )
+
+    parser.add_argument("input_file", help="encoding: any file, decoding: encoded file")
+    parser.add_argument("output_file", help="encoding: any filename, decoding: a filename with the original file extension")
+
+    parser.add_argument("-s", "--stats", action="store_true", help="show compression stats")
+    args = parser.parse_args()
+
+    if args.mode == "1":
+        start = time.perf_counter()
+
+        encode_file(args.input_file, args.output_file)
+
+        delta = time.perf_counter() - start
+
+        if args.stats:
+            input_size = Path(args.input_file).stat().st_size
+            encoded_size = Path(args.output_file).stat().st_size
+
+            compression_stats(input_size, encoded_size, delta)
+    else:
+        decode_file(args.input_file, args.output_file)
 
 
 if __name__ == "__main__":
