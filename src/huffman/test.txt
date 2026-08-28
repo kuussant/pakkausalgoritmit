@@ -1,0 +1,234 @@
+
+
+Wikipedia The Free Encyclopedia
+
+    Donate
+    Create account
+    Log in
+
+Contents
+(Top)
+Gameplay
+
+Plot
+
+    Setting
+    Story
+
+Development
+
+Reception
+
+        Pre-release
+        Post-release
+        Sales
+    In other media
+    Notes
+    References
+    External links
+
+Mina the Hollower
+
+    Article
+    Talk
+
+    Read
+    Edit
+    View history
+
+Appearance
+Text
+
+    Small
+    Standard
+    Large
+
+Width
+
+    Standard
+    Wide
+
+Color
+
+    Automatic
+    Light
+    Dark
+
+From Wikipedia, the free encyclopedia
+Mina the Hollower
+Developer	Yacht Club Games
+Publisher	Yacht Club Games
+Producer	Tina Carter
+Designer	Alec Faulkner
+Composers	
+
+    Jake Kaufman
+    Yuzo Koshiro
+
+Platforms	
+
+    Linux
+    macOS
+    Nintendo Switch
+    Nintendo Switch 2
+    PlayStation 5
+    Windows
+    Xbox Series X/S
+
+Release	May 29, 2026
+Genre	Action-adventure
+Mode	Single-player
+
+Mina the Hollower is a 2026 action-adventure game developed and published by Yacht Club Games. It released on Linux, macOS, Nintendo Switch, Nintendo Switch 2, PlayStation 5, Windows, and Xbox Series X/S. Mina the Hollower is inspired by games developed for the Game Boy. It received acclaim and has sold more than 500,000 copies.
+Gameplay
+The protagonist fighting an enemy with the whip
+
+The player character is Mina, a genius inventor and mouse who has created advances in Spark Technology. She is a Hollower, a member of a guild dedicated to studying the Earth. She can pick between three different weapons in the beginning of the game. They include a whip (Nightstar), dual daggers (Whisper and Vesper), and a hammer (Blaststrike Maul) that allows her to attack in four directions. Mina can unlock two additional weapons later in the game, and hold one at a time.[1]
+
+Additionally, Mina can take advantage of a technique known as "Hollowing". This grants her the ability to burrow underground for a short time as a way to traverse short distances quickly and cross gaps, while being invincible.[1]
+
+Currency called "Bones" can be spent to raise Mina's combat statistics, and trinkets can be equipped to provide permanent boosts to her navigational and combative abilities. Sidearms can also be found throughout the world, providing Mina with a wide variety of support and combative roles; unlike Trinkets, however, Sidearms are lost upon death.[1][2]
+
+The game is in a 3/4 isometric perspective, similar to Game Boy Color games such as The Legend of Zelda: Link's Awakening DX.[1]
+Plot
+Setting
+
+The game takes place in the 19th century in a world where mythical creatures and anthropomorphic animals coexist with humans. It is primarily set on Tenebrous Isle, with various levels surrounding the hub city of Ossex. Ten years ago, Hollower Mina and philanthropist Lionel built the Spark Generators—devices that harness an energy known as Spark—across Tenebrous Isle, bringing power to the region. While Mina pursued other ventures, Lionel stayed behind and became the leader of the isle in the capital, Ossex. Recently, the generators have begun to malfunction, and Mina has been summoned to fix them.[1]
+Story
+
+While traveling to Tenebrous Isle to meet with Lionel, Mina's boat is suddenly attacked by a large creature, causing it to crash and leaving her stranded on the isle. A fellow sailor on the ship, Cappy, prepares her for the journey ahead by giving her healing Plasma Vials. Mina makes her way to Ossex, only to find the town under attack by shock troopers led by Thorne, a bat who once served as the head of Lionel's guard, but has turned against him. After Mina fends off his attack, Thorne flees. Lionel meets Mina and informs her that six of the seven generators have dulled, with Ossex's core generator still operating. He requests Mina to traverse Tenebrous Isle to fix the generators and restore power.
+
+Mina finds the surrounding landscape has been affected by antagonistic creatures, pollution, and adverse weather, with each generator guarded by a monster. Thorne confronts Mina and informs her the generators are the cause of the hostile environment and pleads with Mina to destroy them. Mina addresses her concerns to Lionel, but he tells Mina to ensure Thorne does not destroy them, as their destruction could cause even greater harm to the world.
+
+Thorne later traps Mina on her travels. He reveals that he forged the letter summoning her, as he believes that Mina would be more empathetic than Lionel, who had ignored his pleas. Upon reaching the fifth generator, Mina is contacted by Lionel, who informs her he is going to the sixth generator to reason with Thorne. There, a hidden Mina sees Lionel seemingly convince Thorne that Mina intends to shut off the generators. Lionel then throws Thorne onto the generator, the toxins from which transforms him into a monster, before leaving.
+
+Returning to Ossex, Mina is attacked by the monstrous Thorne, but is spared at the last moment before he flees. Lionel invites Mina for dinner at his manor with other guests, where the core generator resides. Mina attempts to confront Lionel, but he convinces his guests that she is behind the recent events and intends to turn off the generators. Lionel throws out Mina and locks down the manor, but she fights her way back in. Lionel's servant Furgus reveals that Lionel had been aware of the generator's effects and made the Plasma Vials as a way to prevent them from turning her into a monster. Furgus uses the toxins to turn into one himself, but Mina defeats him. She makes her way to Lionel, who burns Thorne's letters of warning about the generators, before attacking her.
+
+Mina defeats Lionel, but he reveals that he has managed to control the Spark's power and was the monster that stranded Mina's ship. He then transforms into the same form and fights Mina as she climbs the manor. Thorne appears and battles Lionel alongside Mina. After Thorne is critically wounded, Mina follows Lionel to the core generator and defeats him by destroying it in an explosion, causing the other generators to shut down.
+
+In an epilogue, the city of Ossex falls into chaos, Tenebrous Isle is left in a leaderless state, and Mina is blamed for killing Lionel and destroying the generators, while causing animosity towards her fellow Hollowers Rhene, Drillhardt and Muriel who are blamed along with her. An angry mob of citizens launches purges against Thorne and Lionel's forces and attacks the guild by blowing up Mina's Underlab and the guild entrance. Additionally, the Queensbury Crypt collapses, crow villagers called Corvidden engage in a similar purge campaign at Septemburg, and Astral Orrery's scientists and recruited allies embark to a new frontier. Some good events also came out of the generators' destruction, namely Nox Bayou’s waters having been healed and restored to its natural state, Bone Beach being left in peace after the harvest of the Dreadworm beast, and Coltrane Peak having its train tracks finally be rebuilt. Cappy helps Mina depart, telling her he hopes the people will eventually see she made the best choice for their survival, but he is soon killed by an angry mob; Mina manages to escape.
+
+In a post-credits scene, Mina arrives on a small island hideout, and finds Thorne in a dire state. Mina uses her last Plasma Vial to heal him, restoring him to his former self. In an alternate ending, should Mina be able to avoid committing any crime that could be mentioned at the dinner scene, Mina could join Lionel. Upon meeting him at an island, he tells Mina that Thorne’s rebellion had been crushed.
+Development
+Mina the Hollower director Sean Velasco[3]
+
+Mina the Hollower originally began as a side project by Yacht Club Games employee Alec Faulkner to hone his coding and artistic capabilities, and was not originally intended for commercial release. Development on the solo affair, then under the name Gothic, caught the attention of Yacht Club management, who viewed the title as a favorable pairing to the studio's flagship Shovel Knight series. On February 2, 2022, a Kickstarter campaign was launched to support development, which raised USD$1,239,584 from 21,439 backers. When including other sources of crowdfunding, the game raised over USD$1,400,000 for the studio.[2][4] Originally scheduled for release on October 31, 2025, the game was later delayed to May 29, 2026.[5][6] On June 1, 2026, programmer David D’Angelo told GameSpot that failed play testing is what led to the game being delayed.[7]
+
+Mina the Hollower was designed to mimic the visual appearance of a Game Boy Color title. This stylistic decision was made while still a side project for Faulkner, inspired by a slew of Game Boy games he had been playing in his personal time. In an attempt to pay homage to early portable gaming and remain as authentic as possible to the original Game Boy hardware, Mina abides by the technical limitations of the Game Boy, containing no 3D assets and limiting pixel design to four colors per tile.[4] The lone exception to this philosophy is the game's widescreen resolution.
+
+The developers' interest in scary stories and horror games, as well as creating the darker-in-tone Specter of Torment downloadable content for Shovel Knight, is what inspired them to create a darker game. The gameplay and story draws influences from such games as Castlevania, The Legend of Zelda: Link's Awakening, and Bloodborne. Other influences include the Disneyland rides The Haunted Mansion and Pirates of the Caribbean.[8] The soundtrack was composed by Jake Kaufman, with two guest tracks from Yuzo Koshiro.[9]
+Reception
+Reception
+Aggregate scoresAggregator	Score
+Metacritic	(NS2) 90/100[10]
+(PC) 90/100[11]
+(PS5) 91/100[12]
+OpenCritic	98% recommend[13][a]
+Review scoresPublication	Score
+Edge	7/10[14]
+Eurogamer	10/10[15]
+Famitsu	8/10, 8/10, 8/10, 8/10[16]
+Game Informer	8.8/10[17]
+GameSpot	9/10[18]
+GamesRadar+	4.5/5[19]
+Giant Bomb	3.5/5[20]
+Hardcore Gamer	4.5/5[21]
+IGN	10/10[22]
+Nintendo Life	9/10[23]
+Nintendo World Report	9/10[24]
+RPGamer	4.5/5[25]
+Shacknews	10/10[26]
+Pre-release
+
+Will Greenwald of PCMag called the game ambitious in a preview, comparing it to "Castlevania meets Zelda" and describing the presentation as "charming". Stating that he was "very impressed" with the game's demo, he called the mechanic of diving into the ground "unusual", but stated that he quickly got used to it as a natural part of gameplay.[27] Thomas Whitehead of Nintendo Life stated that he was ultimately "left excited" by the game after playing the demo, calling it an "excellent return" for the studio after making numerous spin-offs.[28] Alex Stadnik of Game Informer called it a "gorgeous homage".[29]
+Post-release
+[icon]	
+This section needs expansion. You can help by adding missing information. (May 2026)
+
+Mina the Hollower received "universal acclaim", according to the review aggregator website Metacritic.[10][11][12] On review aggregator OpenCritic, 98% of critics recommended the game.[13] The main praise comes from its gameplay, story, and presentation.
+Sales
+
+The game sold over 300,000 copies across all platforms in the first three days.[3] Within two weeks of launching, the game had sold over 500,000 copies.[30]
+In other media
+
+Mina is scheduled to appear as a playable character in the fighting game Rivals of Aether II in 2027.[31] This is the second collaboration between Yacht Club Games and Aether Studios, following the addition of Shovel Knight to the original Rivals of Aether in 2018.[32]
+Notes
+
+    Based on 109 reviews
+
+References
+
+Moss, Gabriel (2026-05-13). "Mina the Hollower is Like Link's Awakening With a Grudge | IGN Preview". IGN. Retrieved 2026-05-20.
+"Yacht Club Games Presents 2022". Yacht Club Games. Archived from the original on May 27, 2022. Retrieved May 20, 2022.
+Schreier, Jason (June 2, 2026). "Indie Video Game 'Mina the Hollower' Sells 300,000 Copies in Three Days". Bloomberg.com. Retrieved June 2, 2026.
+Van Aken, Alex (November 2022). "The Making of Mina the Hollower". Game Informer. Vol. 32, no. 351. Sunrise Publications. pp. 10–11.
+Denzer, TJ (6 May 2026). "Mina the Hollower gets late May 2026 release date". Shacknews. Retrieved 6 May 2026.
+Hagues, Alana (May 6, 2026). "Mina The Hollower Finally Lands On Switch 1 & 2 In Just A Few Weeks". Nintendo Life. Retrieved May 6, 2026.
+Watts, Steve (June 1, 2026). "The Surprising Factors That Made Mina The Hollower A Game Of The Year Contender". GameSpot. Retrieved June 2, 2026.
+Schepper, Jeremy (28 October 2024). "Mina the Hollower: An Interview with Sandy Gordon of Yacht Club Games". Netto's Game Room. Archived from the original on 29 October 2024. Retrieved 28 October 2024.
+Hagues, Alana (March 2, 2022). "Mina The Hollower's Soundtrack Gains Streets Of Rage Composer Yuzo Koshiro". Nintendo Life. Archived from the original on May 20, 2022. Retrieved May 20, 2022.
+"Mina the Hollower for Nintendo Switch 2 Reviews". Metacritic. Retrieved July 2, 2026.
+"Mina the Hollower for PC Reviews". Metacritic. Retrieved July 2, 2026.
+"Mina the Hollower for PlayStation 5 Reviews". Metacritic. Retrieved July 2, 2026.
+"Mina the Hollower". OpenCritic. 27 May 2026. Retrieved June 14, 2026.
+"Mina the Hollower review". Edge. No. 425. August 2026. p. 116.
+Donlan, Christian (May 29, 2026). "Mina the Hollower review - intricate 8-bit beauty". Eurogamer. Retrieved May 29, 2026.
+Uwāman; Ashida, Gigolo; Urara, Umezono; Uchizawa, Roringu. "Mina the Hollower". Famitsu (in Japanese). Retrieved July 1, 2026.
+Hilliard, Kyle (May 27, 2026). "Mina the Hollower Review". Game Informer. Retrieved May 27, 2026.
+Watts, Steve (May 27, 2026). "Mina The Hollower Surpasses The Greatness Of Shovel Knight". GameSpot. Retrieved May 27, 2026.
+Bailey, Dustin (May 27, 2026). "Mina the Hollower's classic Zelda vibes channel Bloodborne to create one of my new retro-style favorites". GamesRadar+. Retrieved May 27, 2026.
+Minotti, Mike (May 27, 2026). "Mina the Hollower Review". Giant Bomb. Retrieved May 27, 2026.
+Ignacchitti, Ivanir (May 27, 2026). "Review: Mina the Hollower". Hardcore Gamer. Retrieved May 27, 2026.
+Claiborn, Samuel (May 27, 2026). "Mina the Hollower Review". IGN. Retrieved May 27, 2026.
+Talbot, Ken (May 27, 2026). "Mina the Hollower - Nintendo Switch 2 Edition Review (Switch 2)". Nintendo Life. Retrieved May 27, 2026.
+Ronaghan, Neal (May 27, 2026). "Mina the Hollower (Switch 2) Review". Nintendo World Report. Retrieved May 27, 2026.
+Radcliff (May 27, 2026). "Mina the Hollower Review". RPGamer. Retrieved May 27, 2026.
+Denzer, TJ (May 27, 2026). "Mina the Hollower review: Mouse on haunted hill". Shacknews. Retrieved May 27, 2026.
+Greenwald, Will (2022-03-30). "Mina the Hollower (for PC) Preview". PCMAG. Archived from the original on 2022-03-31. Retrieved 2026-05-20.
+Whitehead, Thomas (February 3, 2022). "Hands On: 'Mina The Hollower' Mixes Zelda, Castlevania, And Plenty Of 'Git Gud". Nintendo Life. Archived from the original on May 20, 2022. Retrieved May 20, 2022.
+Stadnik, Alex (February 2, 2022). "Mina the Hollower Preview". Game Informer. Archived from the original on February 3, 2022. Retrieved May 20, 2022.
+Ruiz, Fran (June 9, 2026). "Mina the Hollower sells 500k copies less than two weeks after launch as Yacht Club Games teases "the adventure is just getting started"". Eurogamer. Archived from the original on June 10, 2026. Retrieved June 10, 2026.
+Doolan, Liam (June 28, 2026). "Mina The Hollower Is Joining Rivals Of Aether II As A Guest Fighter In 2027". Nintendo Life. Retrieved June 28, 2026.
+
+    Good, Owen S. (August 10, 2018). "Shovel Knight is coming to Rivals of Aether this fall". Polygon.com. Retrieved June 28, 2026.
+
+External links
+
+    Official website
+
+    vte
+
+Yacht Club Games
+Developed	
+Shovel Knight	
+
+    Shovel Knight Plague of Shadows Specter of Torment King of Cards Showdown Pocket Dungeon Dig
+
+Other	
+
+    Mina the Hollower
+
+Published	
+
+    Azure Striker Gunvolt: Striker Pack Cyber Shadow
+
+Categories:
+
+    2026 video gamesAction-adventure gamesDark fantasy video gamesGothic video gamesHorror video gamesIndie gamesKickstarter-funded video gamesLinux gamesMacOS gamesNintendo Switch 2 gamesNintendo Switch gamesPlayStation 5 gamesRetro-style video gamesSingle-player video gamesVideo games about mice and ratsVideo games about talking animalsVideo games about the paranormalVideo games developed in the United StatesVideo games featuring female protagonistsVideo games scored by Jake KaufmanVideo games scored by Yuzo KoshiroVideo games set in the 19th centuryVideo games set on fictional islandsWindows gamesXbox Series X and Series S gamesYacht Club Games games
+
+    This page was last edited on 20 August 2026, at 19:22 (UTC). Page was rendered with Parsoid.
+    Text is available under the Creative Commons Attribution-ShareAlike 4.0 License; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
+
+    Privacy policy
+    About Wikipedia
+    Disclaimers
+    Contact Wikipedia
+    Legal & safety contacts
+    Code of Conduct
+    Developers
+    Statistics
+    Cookie statement
+    Mobile view
+
+    Wikimedia Foundation
+    Powered by MediaWiki
