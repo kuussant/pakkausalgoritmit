@@ -90,7 +90,7 @@ def encode_file(in_filename: str, out_filename: str) -> None:
     # määritä huffman-koodit
     codes = traverse(root)
 
-    print(codes)
+    # print(codes)
 
     byte_len = 8
     current_byte = ''
@@ -102,7 +102,7 @@ def encode_file(in_filename: str, out_filename: str) -> None:
         # headeri
         out_file.write(symbol_count.to_bytes(2, byteorder="big"))
 
-        print(freqs_tuples)
+        # print(freqs_tuples)
         for b, f in freqs_tuples:
             out_file.write(b.to_bytes(1, byteorder="big"))
             out_file.write(f.to_bytes(4, byteorder="big"))
@@ -136,7 +136,7 @@ def encode_file(in_filename: str, out_filename: str) -> None:
         if len(current_byte) > 0:
             current_byte = current_byte + '0' * (byte_len - len(current_byte))
 
-            print(current_byte)
+            # print(current_byte)
             byte = int(current_byte, 2)
             out_file.write(bytes([byte]))
 
