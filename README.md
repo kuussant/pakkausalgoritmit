@@ -5,9 +5,42 @@ Algoritmit ja Tekoäly Harjoitustyö, 2026 (heinä-elokuu)
 <br>
 [Viikkoraportit](https://github.com/kuussant/pakkausalgoritmit/tree/main/dokumentaatio/viikkoraportit)
 
-## LZ78 ja Huffman käyttöönotto ja käyttöohje
+### Projektin käyttöönotto
 
-Lataa projektin vaatimukset:
-<br>
+Lataa projektin vaatimukset projektin juurihakemistossa:
+
 `poetry install`
 
+### Huffman ja LZ78 käyttöohje
+
+#### Ohjelman käynnistys
+`poetry run {huffman, lz78} {1, 2} syötetiedosto tulostiedosto`
+
+1 = pakkaa tiedosto
+<br>
+2 = pura tiedosto
+<br>
+
+#### Pakkaaminen
+**syötetiedosto**: mikä tahansa tiedosto
+<br>
+**tulostiedosto**: mikä tahansa tiedostonimi
+<br>
+
+#### Purkaminen
+**syötetiedosto**: pakattu tiedosto
+<br>
+**tulostiedosto**: tiedostonimi alkuperäisellä tiedostopäätteellä
+
+#### Optiot
+**-h, --help**: käyttöohje
+<br>
+**-s, --stats** (vain pakattaessa): statistiikka
+
+#### Esimerkki
+`poetry run lz78 1 tiedosto.txt tulos.bin --stats`
+
+`poetry run lz78 2 tulos.bin purettu.txt`
+
+### Testit
+`poetry run pytest`
