@@ -18,6 +18,11 @@ packages = [
 ]
 
 
+[tool.poetry.scripts]
+lz78 = "lz78.lz78:main"
+huffman = "huffman.huffman:main"
+
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
