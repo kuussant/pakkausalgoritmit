@@ -4,6 +4,10 @@ Algoritmit ja Tekoäly Harjoitustyö, 2026 (heinä-elokuu)
 [Määrittelydokumentti](https://github.com/kuussant/pakkausalgoritmit/blob/main/dokumentaatio/m%C3%A4%C3%A4rittelydokumentti.md)
 <br>
 [Viikkoraportit](https://github.com/kuussant/pakkausalgoritmit/tree/main/dokumentaatio/viikkoraportit)
+<br>
+[Toteutusdokumentti](https://github.com/kuussant/pakkausalgoritmit/blob/main/dokumentaatio/toteutusdokumentti.md)
+<br>
+[Testausdokumentti](https://github.com/kuussant/pakkausalgoritmit/blob/main/dokumentaatio/testausdokumentti.md)
 
 ### Projektin käyttöönotto
 
