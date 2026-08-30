@@ -13,6 +13,23 @@ def encode_decode(tmp_path: Path, data: bytes):
 
     return de_f.read_bytes()
 
+@pytest.mark.parametrize(
+    "data",
+    [
+        (b"", [(0, b"")]),
+        (b"AABBBCD\n", [(0, b""), (0, 65), (1, 66), (0, 66), (3, 67), (0, 68), (0, 10)]),
+        (b"AAAAAAAAAA\n", [(0, b""), (0, 65), (1, 65), (2, 65), (3, 65), (0, 10)]),
+    ],
+)
+
+def test_lz78_dictionary(tmp_path: Path, data):
+    in_f = tmp_path / "test_input.bin"
+    en_f = tmp_path / "tmp_file.bin"
+
+    in_f.write_bytes(data[0])
+    res = encode_file(in_f, en_f)
+
+    assert res.tokens == data[1]
 
 @pytest.mark.parametrize(
     "data",

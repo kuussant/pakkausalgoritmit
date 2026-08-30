@@ -7,7 +7,9 @@ FILE_BUFFER = 1024
 
 
 class HuffmanTreeNode():
+    """Huffmanin puun muodostava solmu."""
     def __init__(self, symbol = None):
+        """Luo solmun symbolille, alustaa frekvenssin ja vasemman ja oikean lapsen"""
         self.symbol = symbol
         self.freq = None
         self.left = None
@@ -17,7 +19,20 @@ class HuffmanTreeNode():
         return self.freq < other.freq
 
 
-def build_tree(freqs_list: list[tuple[str, int]]) -> HuffmanTreeNode:
+def build_tree(freqs_list: list[tuple[int, int]]) -> HuffmanTreeNode:
+    """Rakentaa Huffman-puun.
+    
+    Puu rakennetaan listasta tupleja jotka sisältävät symbolin ja sen frekvenssin.
+    Lista käydään läpi symboli kerrallaan ja symbolit prioriteettijonoon.
+    Symboleita yhdisellään pienemmät frekvenssit ensin ja poistetaan jonosta, 
+    kunnes jäljellä on yksi (Huffmanin puun juuri).
+
+    Args:
+        freqs_list: Lista tupleja muotoa (symboli, frekvenssi).
+
+    Returns:
+        Puun juuri
+    """
     pq = []
     counter = count() # laskuri, joka erottaa toisistaan esiintymät, joilla on sama todennäköisyys
 
@@ -48,10 +63,21 @@ def build_tree(freqs_list: list[tuple[str, int]]) -> HuffmanTreeNode:
 
 
 def traverse(root: HuffmanTreeNode) -> dict[int, str]:
-    """Kulkee Huffman-puun läpi ja määrittää jokaiselle lehtisolmulle koodin."""
+    """Kulkee Huffman-puun läpi ja määrittää jokaiselle lehtisolmulle koodin.
+    
+    Huffman-puu kuljetaan rekursiivisesti juuresta alkaen, ja lapsisolmuille määritetään
+    Huffman-koodi.
+
+    Args:
+        root: Huffman-puun juuri
+    
+    Returns:
+        Sanakirja jonka avaimina toimii symboli, ja arvoina symbolin Huffman-koodi.
+    """
     codes = dict()
 
     def _traverse(node: HuffmanTreeNode, code: str = ''):
+        """Rekursiossa käytetty apufunktio."""
         if node is None:
             return
 
@@ -69,10 +95,24 @@ def traverse(root: HuffmanTreeNode) -> dict[int, str]:
     return codes
 
 
-def encode_file(in_filename: str, out_filename: str) -> None:
+def encode_file(in_file: str, out_file: str) -> None:
+    """Pakkaa tiedosto Huffmanin koodauksen mukaisesti.
+    
+    Syötetiedosto luetaan aluksi tavu kerrallaan, ja niiden frekvenssit
+    tallennetaan listaan. Listan esiintymät muunnetaan sanakirjaksi, josta
+    rakennetaan Huffman-puu. Puusta koostetaan Huffman-koodit jokaiselle symbolille.
+    Tulostiedostoon tallennetaan headeri, 
+    joka pitää sisällään eri symbolien määrän ja itse symbolit sekä niiden frekvenssit.
+    Syötetiedosto käydään toisen kerran läpi tavu kerrallaan, ja esiintymät kirjoitetaan
+    Huffman-koodeina tulostiedostoon.
+
+    Args:
+        in_file: syötetiedosto
+        out_file: pakattu tulostiedosto
+    """
     freqs = [0] * 256 # taulukko ascii merkkejä varten
     
-    with open(in_filename, "rb") as f:
+    with open(in_file, "rb") as f:
         while True:
             chunk = f.read(FILE_BUFFER)
 
@@ -92,19 +132,16 @@ def encode_file(in_filename: str, out_filename: str) -> None:
     # määritä huffman-koodit
     codes = traverse(root)
 
-    # print(codes)
-
     byte_len = 8
     current_byte = ''
     overflow_bits = ''
     symbol_count = len(freqs_tuples)
 
     # kulje syötetiedosto uudelleen läpi ja luo pakattu tiedosto
-    with open(in_filename, "rb") as in_file, open(out_filename, "wb") as out_file:
+    with open(in_file, "rb") as in_file, open(out_file, "wb") as out_file:
         # headeri
         out_file.write(symbol_count.to_bytes(2, byteorder="big"))
 
-        # print(freqs_tuples)
         for b, f in freqs_tuples:
             out_file.write(b.to_bytes(1, byteorder="big"))
             out_file.write(f.to_bytes(4, byteorder="big"))
@@ -125,14 +162,11 @@ def encode_file(in_filename: str, out_filename: str) -> None:
                     write_out = current_byte[:8]
                     overflow_bits = current_byte[8:]
 
-                    # print(write_out)
-                    # print(overflow_bits)
                     # muunna merkkijono tavuksi
                     byte = int(write_out, 2)
                     out_file.write(bytes([byte]))
 
                     current_byte = overflow_bits
-                    #print(write_out)
 
         # hoida jäämät
         if len(current_byte) > 0:
@@ -142,11 +176,22 @@ def encode_file(in_filename: str, out_filename: str) -> None:
             out_file.write(bytes([byte]))
 
 
-def decode_file(in_filename: str, out_filename: str) -> None:
+def decode_file(in_file: str, out_file: str) -> None:
+    """Purkaa Huffman-pakatun tiedoston.
+    
+    Aluksi pakatun syötetiedoston headeristä rakennetaan Huffman-puu, ja luodaan symboleille Huffman-koodit. Symbolien frekvensseistä
+    otetaan talteen alkuperäisen tiedoston koko.
+    Loput tiedoston datasta luetaan bitti kerrallaan. Kun bittijonosta on saatu koostettua validi Huffman-koodi,
+    tätä vastaava symboli kirjoitetaan tulostiedostoon kunnes kaikki tavut on kirjoitettu.
+    
+    Args:
+        in_file: Huffman-pakattu syötetiedosto
+        out_file: tulostiedosto
+    """
     freqs_tuples = []
     file_size = 0
 
-    with open(in_filename, "rb") as bin, open(out_filename, "wb") as out:
+    with open(in_file, "rb") as bin, open(out_file, "wb") as out:
         # lue headeri
         data = bin.read(2)
         symbol_count = int.from_bytes(data, byteorder="big")
@@ -159,6 +204,13 @@ def decode_file(in_filename: str, out_filename: str) -> None:
 
         # lue data
         root = build_tree(freqs_tuples)
+
+        # jos merkit ovat kaikki identtisiä, kirjoita ne suoraan tiedostoon
+        if len(freqs_tuples) == 1:
+            symbol, freq = freqs_tuples[0]
+            out.write(bytes([symbol]) * freq)
+            return
+        
         traverse(root)
         next_node = root
 

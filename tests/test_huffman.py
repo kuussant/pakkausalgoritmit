@@ -1,6 +1,91 @@
 from pathlib import Path
 import pytest
-from huffman.huffman import encode_file, decode_file
+from huffman.huffman import encode_file, decode_file, build_tree
+
+
+def test_empty_list_returns_none():
+        root = build_tree([])
+
+        assert root is None
+
+
+def test_single_symbol():
+    root = build_tree([(65, 10)])
+
+    assert root is not None
+    assert root.symbol == 65
+    assert root.freq == 10
+    assert root.left is None
+    assert root.right is None
+
+
+def test_two_symbols():
+        root = build_tree([
+            (65, 5),
+            (66, 10),
+        ])
+
+        assert root is not None
+        assert root.symbol is None
+        assert root.freq == 15
+
+        assert root.left.symbol == 65
+        assert root.left.freq == 5
+
+        assert root.right.symbol == 66
+        assert root.right.freq == 10
+
+
+def test_equal_frequencies_do_not_crash():
+        freqs = [
+            (65, 10),
+            (66, 10),
+            (67, 10),
+            (68, 10),
+        ]
+
+        root = build_tree(freqs)
+
+        assert root is not None
+        assert root.freq == 40
+
+
+def test_three_symbols():
+    root = build_tree([
+        (65, 5),
+        (66, 2),
+        (67, 1),
+    ])
+
+    assert root is not None
+    assert root.symbol is None
+    assert root.freq == 8
+
+    assert root.left.freq == 3
+    assert root.left.symbol is None
+
+    assert root.left.left.symbol == 67
+    assert root.left.left.freq == 1
+
+    assert root.left.right.symbol == 66
+    assert root.left.right.freq == 2
+
+    assert root.right.symbol == 65
+    assert root.right.freq == 5
+
+
+def test_root_frequency_is_sum_of_all_frequencies():
+        freqs = [
+            (65, 10),
+            (66, 20),
+            (67, 30),
+            (68, 40),
+        ]
+
+        root = build_tree(freqs)
+
+        assert root.freq == 100
+
 
 def encode_decode(tmp_path: Path, data: bytes):
     in_f = tmp_path / "test_input.bin"

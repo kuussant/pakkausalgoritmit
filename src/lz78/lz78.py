@@ -7,14 +7,69 @@ FILE_BUFFER = 1024
 BYTE_BITS = 8
 
 
+class TokenDictionary():
+    """Tietorakenne LZ78 tokenien varastoimiseen.
+
+    Tokenit ovat muotoa (indeksi, tavu), missä indeksi viittaa
+    listan indeksiin, eli aina aiempaan tokeniin kunnes saavutetaan
+    0-indeksi, eli tyhjä tavu. 
+    Lopulta token-ketjusta muodostetaan kokonainen virke.
+    """
+    def __init__(self):
+        """Luodaan tyhjä tokeni tietorakenteen juureksi.
+        Samalla tallennetaan tokenin indeksi token_indices-sanakirjaan,
+        helpottamaan indeksin löytämistä.
+        """
+        self.tokens = [(0, b"")]
+        self.token_indices = {(0, b""): 0}
+        self.next_index = 1
+
+    def add_token(self, token):
+        """Lisää uuden tokenin.
+        
+        Args:
+            token: Tuple (indeksi, tavu)
+        """
+        self.tokens.append(token)
+        self.token_indices[token] = self.next_index
+        self.next_index += 1
+
+    def get_token_index(self, token):
+        """Hae token-indeksi tokenin perusteella.
+        Args:
+            token: Tuple (indeksi, tavu)
+
+        Returns:
+            Tokenin indeksi tai None jos indeksiä ei löydy.
+        """
+        return self.token_indices.get(token)
+
+    def __len__(self):
+        return len(self.tokens)
+
+    def __eq__(self, other):
+        return self.tokens == other
+    
 def encode_file(in_file, out_file):
-    tokens = [(0, b"")]
-    token_indexes = {(0, b""): 0}
-    next_index = 1
+    """Pakkaa tiedoston käyttäen LZ78 pakkausalgoritmia.
+
+    Syötetiedosto luetaan tavulohkoina. Tavulohkot käsitellään tavu kerrallaan,
+    ja lisätään token-tietorakenteeseen, jos tavua ei löydy rakenteesta.
+    Tokenit kirjoitetaan tulostiedostoon vaihtelevan kokoisin indeksein, eli kuinka
+    monta bittiä vaaditaan esittämään edellinen suurin indeksi.
+
+    Args:
+        in_file: syötetiedosto
+        out_file: tulostiedosto
+
+    Returns:
+        Tokenien lukumäärä.
+    """
     last_index = 0
     token_count = 0
     byte_buff = ""
 
+    tokens = TokenDictionary()
     with open(in_file, "rb") as input, open(out_file, "wb") as output:
         while True:
             chunk = input.read(FILE_BUFFER)
@@ -24,20 +79,13 @@ def encode_file(in_file, out_file):
 
             for b in chunk:
                 token = (last_index, b)
-                index = token_indexes.get(token)
+                index = tokens.get_token_index(token)
 
                 if index is not None:
                     last_index = index
                 else:
-                    # 1. Count current entries, determine the number of bits to represent previous indices
-                    # for the next entry.
-                    # 2. construct bit string for the next index, limit to max bits needed, concat symbol
-                    # 3. write byte to file, buffer carry over bits for next entry
-                    tokens.append(token)
-                    token_indexes[token] = next_index
-                    next_index += 1
+                    tokens.add_token(token)
                     last_index = 0
-
                     index_bits = format(token[0], f"0{max(token_count.bit_length(), 1)}b")
                     symbol_bits = format(token[1], "08b")
                     
@@ -66,10 +114,24 @@ def encode_file(in_file, out_file):
                 byte_buff += padding
                 output.write(bytes([int(byte_buff, 2)]))
 
-        return tokens_len
+        return tokens
 
 
 def decode_file(in_file, out_file):
+    """Purkaa LZ78-pakattu tiedosto.
+
+    Pakatut bitit luetaan tavun kokoisina lohkoina puskuriin, kunnes
+    on tarpeeksi bittejä yhtä tokenia varten. Samalla päivitetään
+    indeksikokoa. Luettu data lisätään tokens-listaan, josta lopulta
+    kootaan tulostiedosto.
+
+    Args:
+        in_file: lz78-pakattu syötetiedosto
+        out_file: tulostiedosto
+    
+    Returns:
+        Palauttaa tulostiedoston.
+    """
     tokens = [(0, b"")]
     buffer = 0
     cur_buff_bit = 0
@@ -79,12 +141,35 @@ def decode_file(in_file, out_file):
     symbol_bits_to_read = 8
 
     def read_bits(n: int, cur_buff_bit: int) -> tuple[int, int]:
+        """Lukee n bittiä puskurista.
+        
+        Puskurissa ylläpidetään nykyistä positiota (cur_buff_bit),
+        jonka kohdalta luetaan seuraavat n bittiä.
+
+        Args:
+            n: luettavien bittien määrä
+            cur_buff_bit: nykyinen positio puskurissa
+
+        Returns:
+            Tuple joka sisältää luetut n bittiä ja päivitetyn position. 
+        """
         res = (buffer >> (cur_buff_bit - n)) & ((1 << n) - 1)
         cur_buff_bit -= n
 
         return res, cur_buff_bit
 
     def write_token_to_file(token: tuple[int, int], file: BinaryIO) -> None:
+        """Kirjoittaa tokenin tiedostoon.
+        
+        Token kasataan virkkeeksi kulkemalla indeksi-viittauksia 
+        pitkin pitkin, kunnes saavutaan 0-tokeniin. Esiintymät tallennetaan
+        listaan. Lopulta lista käydään läpi käänteisessä järjestyksessä, minkä
+        yhteydessä tokenien tavuta kirjoitetaan tulostiedostoon.
+
+        Args:
+            token: token tuple
+            file: tiedosto, johon kirjoitetaan token
+        """
         occurs = []
         
         while token != tokens[0]:
@@ -162,15 +247,15 @@ def main():
     if args.mode == "1":
         start = time.perf_counter()
 
-        token_count = encode_file(args.input_file, args.output_file)
+        tokens = encode_file(args.input_file, args.output_file)
 
         delta = time.perf_counter() - start
 
         if args.stats:
             input_size = Path(args.input_file).stat().st_size
             encoded_size = Path(args.output_file).stat().st_size
-
-            compression_stats(input_size, encoded_size, token_count, delta)
+            print(tokens.tokens)
+            compression_stats(input_size, encoded_size, len(tokens), delta)
     else:
         decode_file(args.input_file, args.output_file)
 
