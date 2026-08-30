@@ -55,6 +55,19 @@ def test_encode_decode(tmp_path, data):
     assert res == data
 
 
+def test_big_file(tmp_path: Path):
+    tests_dir = Path(__file__).parent
+    input_file = tests_dir / "big_file.html"
+
+    encoded_file = tmp_path / "large_test_file.encoded"
+    decoded_file = tmp_path / "large_test_file.decoded"
+
+    encode_file(input_file, encoded_file)
+    decode_file(encoded_file, decoded_file)
+
+    assert decoded_file.read_bytes() == input_file.read_bytes()
+
+
 def test_all_byte_values(tmp_path):
     data = bytes(range(256))
 
