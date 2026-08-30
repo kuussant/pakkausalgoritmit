@@ -103,12 +103,11 @@ def encode_file(in_file, out_file):
         if byte_buff:
             tokens_len += 1
 
-            # write the rest of full bytes from buffer
+            # kirjoita loput puskurista tavuina tiedostoon
             while len(byte_buff) >= BYTE_BITS:
                 output.write(bytes([int(byte_buff[:BYTE_BITS], 2)]))
                 byte_buff = byte_buff[BYTE_BITS:]
 
-            # write padding to remaining bits in buffer
             if byte_buff:
                 padding = '0' * (BYTE_BITS - len(byte_buff))
                 byte_buff += padding
@@ -186,7 +185,7 @@ def decode_file(in_file, out_file):
             if not byte:
                 break
 
-            # make space for new byte in buffer
+            # tee tilaa tavun verran uutta tavua varten
             buffer = (buffer << BYTE_BITS) + byte[0]
             cur_buff_bit += BYTE_BITS
 
@@ -203,7 +202,7 @@ def decode_file(in_file, out_file):
 
             write_token_to_file(token, output)
 
-            # flush buffer to 8 bits
+            # ota talteen bufferin ensimmäinen tavu
             if cur_buff_bit <= BYTE_BITS:
                 buffer = buffer & ((1 << BYTE_BITS) - 1)
 
