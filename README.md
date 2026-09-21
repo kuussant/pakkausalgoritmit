@@ -48,3 +48,16 @@ Lataa projektin vaatimukset projektin juurihakemistossa:
 
 ### Testit
 `poetry run pytest`
+
+### Algoritmien vertaaminen
+[Vertaaminen tapahtuu täällä](https://github.com/kuussant/pakkausalgoritmit/blob/main/comparison)
+
+Anna compare.sh-skriptille suoritusoikeus:
+
+`chmod +x compare.sh`
+
+Aja vertailu:
+
+`./compare.sh`
+
+Algoritmien statistiikka tallentuu saman hakemiston comparison.csv-tiedostoon.
