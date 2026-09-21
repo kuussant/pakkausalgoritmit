@@ -1,3 +1,13 @@
+# Algoritmien vertailu
+<img width="1049" height="794" alt="image" src="https://github.com/user-attachments/assets/38421173-0b48-4f94-b5b7-62dd88d56430" />
+
+
+Vertailin algoritmeja keskenään 16 eri luonnollista kieltä sisältävällä tiedostolla, 1.3 kilotavusta 10.7 megatavuun.
+
+LZ78 suoriutui 24.23% Huffmania paremmin pakkaamisessa, mutta hävisi ajallisesti Huffmanille, joka oli 41.55% nopeampi. Toisaalta, LZ78 oli purkamisessa 44.51% Huffmania nopeampi.
+
+Keskimäärin LZ78 pakatut tiedostot olivat 51.91% alkuperäisestä ja Huffmanin 59.38% alkuperäisestä. LZ78 suhde (compression ratio) pieneni 36.84% tiedoston koon kasvaessa ja Huffmanin 24.12%.
+
 ## LZ78
 
 LZ78-toteutus jakautuu kolmeen osaan: 
