@@ -1,4 +1,7 @@
 # Algoritmien vertailu
+
+[Vertailu tehty täällä](https://github.com/kuussant/pakkausalgoritmit/blob/main/comparison)
+
 <img width="1049" height="794" alt="image" src="https://github.com/user-attachments/assets/38421173-0b48-4f94-b5b7-62dd88d56430" />
 
 
