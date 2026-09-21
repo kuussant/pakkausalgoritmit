@@ -226,6 +226,10 @@ def compression_stats(input_size, encoded_size, token_count, time_elapsed):
     print(f"{'Time:':<25}{time_elapsed:.4f} s")
 
 
+def decompression_stats(time_elapsed):
+    print(f"{'Decompression time:':<25}{time_elapsed:.4f} s")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description = "LZ78 codec"
@@ -253,10 +257,17 @@ def main():
         if args.stats:
             input_size = Path(args.input_file).stat().st_size
             encoded_size = Path(args.output_file).stat().st_size
-            print(tokens.tokens)
+            # print(tokens.tokens)
             compression_stats(input_size, encoded_size, len(tokens), delta)
     else:
+        start = time.perf_counter()
+
         decode_file(args.input_file, args.output_file)
+
+        delta = time.perf_counter() - start
+
+        if args.stats:
+            decompression_stats(delta)
 
 
 if __name__ == "__main__":

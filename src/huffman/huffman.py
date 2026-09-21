@@ -257,6 +257,10 @@ def compression_stats(input_size, encoded_size, time_elapsed):
     print(f"{'Time:':<25}{time_elapsed:.4f} s")
 
 
+def decompression_stats(time_elapsed):
+    print(f"{'Decompression time:':<25}{time_elapsed:.4f} s")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description = "Huffman coding"
@@ -287,7 +291,15 @@ def main():
 
             compression_stats(input_size, encoded_size, delta)
     else:
+        start = time.perf_counter()
+
         decode_file(args.input_file, args.output_file)
+
+        delta = time.perf_counter() - start
+
+        if args.stats:
+            decompression_stats(delta)
+
 
 
 if __name__ == "__main__":
